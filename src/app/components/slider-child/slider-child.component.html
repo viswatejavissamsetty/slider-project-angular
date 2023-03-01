@@ -1,0 +1,19 @@
+<div class="container">
+    <div *ngFor="let slide of slideData; let i = index" class="card" [class.active]="currentSlide === i"
+        [class.forward]="direction === 1" [class.backword]="direction === -1">
+        <div class="card-header">
+            <div class="card-title">{{slide.title}}</div>
+        </div>
+        <div class="card-body">
+            <p class="card-content">{{slide.content}}</p>
+        </div>
+        <div class="card-footer">
+            <a href="javascript:void(0)" class="link">{{slide.link}}</a>
+        </div>
+    </div>
+</div>
+<div class="controls">
+    <div class="page-numbers">{{currentSlide + 1}} / {{slideData.length}}</div>
+    <button type="button" [disabled]="currentSlide === 0" (click)="prevoius()">Previous</button>
+    <button type="button" [disabled]="currentSlide === slideData.length - 1" (click)="next()">Next</button>
+</div>

@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+
+    .card {
+        background-color: white;
+        box-shadow: -1px 1px 10px 1px black;
+        margin: 50px;
+        border-radius: 10px;
+        width: 300px;
+        min-width: 300px;
+        display: none;
+        visibility: hidden;
+        overflow-x: hidden;
+
+        &.forward {
+            animation-name: slideBackword;
+        }
+        
+        &.backword {
+            animation-name: slideForward;
+        }
+
+        &.active {
+            display: block;
+            visibility: visible;
+
+            &.forward {
+                animation-name: slideForward;
+            }
+
+            &.backword {
+                animation-name: slideBackword;
+            }
+
+            animation-duration: 1s;
+            animation-direction: attr(data-direction);
+            transition: all 1s;
+        }
+
+        @keyframes slideForward {
+            0% {
+                transform: translateX(1000px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideBackword {
+            0% {
+                transform: translateX(-1000px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        .card-header {
+            padding: 5px;
+            border-radius: 10px;
+            background-color: red;
+
+            .card-title {
+                font-weight: 800;
+                font-size: 28px;
+                font-family: 'Times New Roman', Times, serif;
+                letter-spacing: 1.2px;
+            }
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-footer {
+            padding: 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+
+            .link {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .page-numbers {
+        font-weight: 800;
+        font-size: 28;
+    }
+
+    button {
+        padding: 10px;
+        background-color: yellowgreen;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+}
